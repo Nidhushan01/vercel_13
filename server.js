@@ -17,7 +17,7 @@ const app = express();
 
 // Connect to the database before starting the server
 connectDB()
-  .then(async () => { // Make this callback `async`
+  .then(async () => {
     console.log("Database connected successfully");
 
     await createAdminUser(); // Now `await` works correctly
@@ -34,17 +34,14 @@ app.use(cors());
 // Routes
 app.use("/auth", signupRoute);  
 app.use("/auth", loginRoute);   
-app.use("/auth",adminRoute);
+app.use("/auth", adminRoute);
 app.use("/auth", userRoutes);
 app.get('/auth', (req, res) => {
   res.send('Hello World!')
-})
+});
 app.get('/', (req, res) => {
   res.send('Hello Worldstart!')
-})
-
-// Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
 });
+
+// Export as a Vercel serverless function
+export default app;
