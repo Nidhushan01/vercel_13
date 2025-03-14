@@ -36,8 +36,11 @@ app.use("/auth", signupRoute);
 app.use("/auth", loginRoute);   
 app.use("/auth",adminRoute);
 app.use("/auth", userRoutes);
-app.get('/', (req, res) => {
+app.get('/auth', (req, res) => {
   res.send('Hello World!')
+})
+app.get('/', (req, res) => {
+  res.send('Hello Worldstart!')
 })
 
 // Start the server
