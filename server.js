@@ -36,6 +36,9 @@ app.use("/auth", signupRoute);
 app.use("/auth", loginRoute);   
 app.use("/auth",adminRoute);
 app.use("/auth", userRoutes);
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
 // Start the server
 const PORT = process.env.PORT || 5000;
